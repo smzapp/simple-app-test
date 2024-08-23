@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\IPAddressController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('/auth')->group(function() {
+    Route::post('/login', [LoginController::class, 'authenticate']);
+});
+
 Route::middleware('auth:api')->group(function() {
 
-    Route::apiResource('ip-addresses',  App\Http\Controllers\Api\IPAddressController::class)
+    Route::apiResource('ip-addresses',  IPAddressController::class)
             ->except(['destroy']);
 });

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\IPAddressService;
+use App\Http\Controllers\Api\BaseController;
 
-class IPAddressController extends Controller
+class IPAddressController extends BaseController
 {
     private $service;
 
@@ -17,8 +17,8 @@ class IPAddressController extends Controller
 
     public function index()
     {
-        return response()->json([
-            'data' => $this->service->getIPList()
-        ], 201);
+        $data =  $this->service->getIPList();
+
+        return $this->sendSuccess( $data, 'successfull', 200  );
     }
 }
