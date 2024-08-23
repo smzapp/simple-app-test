@@ -1,13 +1,13 @@
-import NextAuth, { Session } from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
+import NextAuth, { NextAuthOptions, Session } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 export interface RequestBodyType {
-  userData: {};
+  userData: any;
   token: string;
   expires_at: string;
 }
 
-export const authOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -15,22 +15,24 @@ export const authOptions = {
         email: { label: "Email Address", type: "text", placeholder: "youremailaddress@test.com" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials, req) {
-        const {  token, expires_at, userData}: RequestBodyType | any =
-        req.body;
+      async authorize(credentials) {
+        const { token, expires_at, userData }: RequestBodyType = credentials as any;
+        
         if (token) {
           const data = JSON.parse(userData);
+
           return {
             ...data,
-            token: token,
-            expires_at: expires_at,
+            token,
+            expires_at,
           };
         }
-        return null
+        return null;
       }
     })
   ],
-  secret: process.env.SECRET ?? '$3cRet#',
+
+  secret: process.env.NEXTAUTH_SECRET ?? '$3cRet#',
 
   pages: {
     signIn: '/auth/login',
@@ -39,26 +41,27 @@ export const authOptions = {
   },
 
   callbacks: {
-    jwt: async ({ token, user } : any) => {
-      user && (token.user = user);
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = user;
+        token.expires_at = token.expires_at;
+      }
       return token;
     },
-    session: async ({ session, token } : any) => {
-      const data = {
+    async session({ session, token }) {
+      return {
         ...session,
         user: token.user,
         expires: token.expires_at,
-      };
-
-      return Promise.resolve(data as Session);
+      } as Session;
     },
   },
 
   events: {},
 
   debug: false,
-}
+};
 
-const handler = NextAuth(authOptions)
+const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };

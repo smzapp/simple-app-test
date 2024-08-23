@@ -40,14 +40,13 @@ const LoginForm = () => {
       
       const {data} = result.data;
 
-      const payload = afterSignInHandler(data);
+      const res = await signIn('credentials', afterSignInHandler(data));
 
-      signIn('credentials', payload)
-        .then((res) => {
-          router.push(BASE_URL + '/dashboard');
-          return true;
-        })
-        .catch((error) => setErrorMessage('Something went wrong.'))
+      if (res?.ok) {
+        router.push(BASE_URL + '/dashboard');
+      } else {
+        setErrorMessage('Something went wrong.');
+      }
 
     } catch (e) {
       setErrorMessage('Invalid credentials');
