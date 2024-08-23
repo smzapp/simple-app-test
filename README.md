@@ -5,6 +5,7 @@ Author: Samuel Amador
 Description: This application is intended for ad-group. Please don't use/reproduce this
 source code without written permission from the author.
 
+
 # System Requirements
 
 Backend: `Laravel v.9.0`
@@ -45,3 +46,8 @@ Frontend Stack: `NextJS with typescript`
 `$ npm install`
 
 `$ npm run dev`
+
+# Sample Login credential
+
+`email: sam@test.com`
+`password: test1234`

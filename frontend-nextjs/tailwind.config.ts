@@ -17,8 +17,19 @@ const config: Config = {
         primary: '#02314F',
         secondary: '#FE8400',
         gray: '#ccc',
-        lightGray: '#f0f0f0'
-      }
+        lightGray: '#f0f0f0',
+        danger: 'red'
+      },
+      screens: {
+        xs: '320px',
+        mbl: '896px',
+        lbx: '1152px',
+      },
+      fontSize: {
+        xss: '10px',
+        xsss: '8px',
+        xssss: '7px',
+      },
     },
   },
   plugins: [],

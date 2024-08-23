@@ -15,7 +15,8 @@ class AuthService
 
         return [
             'token' => $result->accessToken,
-            'expires_at' => $result->token->expires_at
+            'expires_at' => $result->token->expires_at,
+            'userData' => $user
         ];
     }
 }
