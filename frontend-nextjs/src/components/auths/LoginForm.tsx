@@ -44,7 +44,7 @@ const LoginForm = () => {
 
       signIn('credentials', payload)
         .then((res) => {
-          router.push(BASE_URL + '/about');
+          router.push(BASE_URL + '/dashboard');
           return true;
         })
         .catch((error) => setErrorMessage('Something went wrong.'))

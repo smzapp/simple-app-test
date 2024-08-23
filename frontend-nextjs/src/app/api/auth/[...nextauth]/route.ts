@@ -7,7 +7,7 @@ export interface RequestBodyType {
   expires_at: string;
 }
 
-const handler = NextAuth({
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -39,11 +39,11 @@ const handler = NextAuth({
   },
 
   callbacks: {
-    jwt: async ({ token, user }) => {
+    jwt: async ({ token, user } : any) => {
       user && (token.user = user);
       return token;
     },
-    session: async ({ session, token }) => {
+    session: async ({ session, token } : any) => {
       const data = {
         ...session,
         user: token.user,
@@ -57,6 +57,8 @@ const handler = NextAuth({
   events: {},
 
   debug: false,
-})
+}
+
+const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }
