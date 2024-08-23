@@ -4,17 +4,17 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\IPAddress;
 
-class DatabaseSeeder extends Seeder
+class IPAddressSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
-        $this->call(IPAddressSeeder::class);
+        IPAddress::factory()->count(20)->create();
     }
 }

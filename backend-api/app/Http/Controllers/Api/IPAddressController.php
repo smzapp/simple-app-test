@@ -19,6 +19,6 @@ class IPAddressController extends BaseController
     {
         $data =  $this->service->getIPList();
 
-        return $this->sendSuccess( $data, 'successfull', 200  );
+        return $this->sendSuccess( $data, 'Successfully retrieved data', 200  );
     }
 }
