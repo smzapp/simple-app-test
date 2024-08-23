@@ -10,4 +10,11 @@ class IPAddress extends Model
     use HasFactory;
 
     protected $fillable = ['value', 'label'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::observe(\App\Observers\IPAddressObserver::class);
+    }
 }

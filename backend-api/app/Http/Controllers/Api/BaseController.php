@@ -18,4 +18,14 @@ class BaseController extends Controller
             'message' => $message,
         ], $statusCode);
     }
+    
+    /**
+    * Common error response
+    */
+   protected function sendError($message = 'Success', $statusCode = 404)
+   {
+       return response()->json([
+           'message' => $message,
+       ], $statusCode);
+   }
 }
