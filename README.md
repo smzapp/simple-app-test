@@ -28,6 +28,8 @@ Frontend Stack: `NextJS with typescript`
 
 `$ php artisan key:generate`
 
+`$ php artisan migrate --seed`
+
 `$ php artisan passport:install`
 
 `$ php artisan serve`

@@ -4,15 +4,31 @@ namespace App\Observers;
 
 use App\Models\SystemLog;
 use App\Models\IPAddress;
-use Illuminate\Support\Facades\Auth;
-use Log;
+use Auth;
 
 class IPAddressObserver
 {
     /**
-     * Handle the SystemLog "updated" event.
+     * Handle the IPAddress "created" event.
      *
-     * @param  \App\Models\SystemLog  $systemLog
+     * @param  \App\Models\IPAddress  $ipaddress
+     * @return void
+     */
+    public function created(IPAddress $ipaddress)
+    {
+        SystemLog::create([
+            'loggable_type' => IPAddress::class,
+            'loggable_id' => $ipaddress->id,
+            'action'    => 'create',
+            'new_value' => $ipaddress->value,
+            'user_id' => Auth::id(),
+        ]);
+    }
+
+    /**
+     * Handle the IPAddress "updated" event.
+     *
+     * @param  \App\Models\IPAddress  $ipaddress
      * @return void
      */
     public function updated(IPAddress $ipAddress)
@@ -38,5 +54,4 @@ class IPAddressObserver
             }
         }
     }
-
 }
