@@ -1,9 +1,7 @@
 import { API_URL } from "@/config/app.config";
 import axios from "axios";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest } from "next";
 import { authHeader } from "../route";
-import { error } from "console";
-import { NextResponse } from "next/server";
 
 export interface IpAddress {
   value: string;

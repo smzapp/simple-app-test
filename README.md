@@ -51,4 +51,6 @@ Frontend Stack: `NextJS with typescript`
 
 `$ npm run dev`
 
+# Screenshot
 
+https://i.imgur.com/P6PjCxw.png

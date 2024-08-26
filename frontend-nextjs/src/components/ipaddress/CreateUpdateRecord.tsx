@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { IpAddressProps, useIpAddressContext } from './IpAddressProvider';
+import { useIpAddressContext } from './IpAddressProvider';
 import { BASE_URL } from '@/config/app.config';
 import axios from 'axios';
 
