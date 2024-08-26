@@ -1,62 +1,44 @@
-'use client';
+import React, { useEffect, useState } from 'react';
+import { useIpAddressContext } from './IpAddressProvider';
 
-import {  BASE_URL } from '@/config/app.config';
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { IpAddressProps } from './Index';
-
-  
 function ListItems() {
-  const [items, setItems] = useState<IpAddressProps[]>([]);
+  const { items, refreshItems, setSelectedIpAddress } = useIpAddressContext();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchIpAddress = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(BASE_URL + '/api/ip-address');
-        setItems(response.data);
-      } catch(e) {
-        console.log(e);
-      } finally {
-        setLoading(false);
-      }
-    }
+    refreshItems().finally(() => setLoading(false));
+  }, [refreshItems]);
 
-    fetchIpAddress();
-  }, []);
-
-  if(loading) {
-    return <p>loading...</p>
+  if (loading) {
+    return <p>Loading...</p>;
   }
 
   return (
     <table className="border-collapse border border-slate-400 w-full">
-      <thead className='bg-lightGray'>
-        <tr className='text-left'>
-          <th>#</th>
-          <th>Ip Address</th>
+      <thead className="bg-lightGray">
+        <tr className="text-left">
+          <th className='pl-2 py-2'>Ip Address</th>
           <th>Label</th>
           <th>Edit</th>
           <th>Logs</th>
         </tr>
       </thead>
       <tbody>
-        {
-          items.map((item : IpAddressProps) => (
-            <tr key={item.id} className='border border-gray text-left'>
-              <td>{item.id}</td>
-              <td>{item.value}</td>
-              <td>{item.label}</td>
-              <td>Edit</td>
-              <td>View</td>
-            </tr>
-          ))
-        }
+        {items.map((item, key) => (
+          <tr key={key} className="border border-gray text-left bg-white text-sm">
+            <td className='pl-2 py-2'>{item.value}</td>
+            <td>{item.label}</td>
+            <td>Edit</td>
+            <td title='Click to view Logs'>
+              <button 
+                onClick={() => setSelectedIpAddress(item)}
+                >View</button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
-  )
+  );
 }
 
-
-export default ListItems
+export default ListItems;

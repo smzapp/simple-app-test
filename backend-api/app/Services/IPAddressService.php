@@ -10,6 +10,6 @@ class IPAddressService
      */
     public function getIPList()
     {
-        return IPAddress::get();
+        return IPAddress::with('system_logs')->get();
     }
 }

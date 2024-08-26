@@ -1,22 +1,25 @@
 'use client';
 
-import React from 'react'
+import React from 'react';
 import ListItems from './ListItems';
+import AddRecords from './AddRecords';
+import {IpAddressProvider} from './IpAddressProvider';
+import AllLogs from './AllLogs';
 
-export interface IpAddressProps {
-  id: number;
-  value: string;
-  label: string;
-}
-
-function Index () {
+function Index() {
   return (
-    <div className='flex'>
-      <div className='w-1/2'>
-       <ListItems />
-      </div> 
-    </div>
-  )
+    <IpAddressProvider>
+      <div className='flex'>
+        <div className='w-3/5 bg-white'>
+          <ListItems />
+        </div>
+        <div className='w-full'>
+          <AddRecords />
+          <AllLogs />
+        </div>
+      </div>
+    </IpAddressProvider>
+  );
 }
 
-export default Index
+export default Index;

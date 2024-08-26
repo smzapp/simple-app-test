@@ -8,8 +8,10 @@ export const metadata: Metadata = {
 
 export default async function page() {
   return (
-    <div className='container mx-auto'>
-      <IpAddress />
+    <div className='bg-primary'>
+      <div className='container-lg mx-auto'>
+        <IpAddress />
+      </div>
     </div>
   )
 }

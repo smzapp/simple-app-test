@@ -17,4 +17,9 @@ class IPAddress extends Model
 
         static::observe(\App\Observers\IPAddressObserver::class);
     }
+
+    public function system_logs()
+    {
+        return $this->morphMany(SystemLog::class, 'loggable');
+    }
 }

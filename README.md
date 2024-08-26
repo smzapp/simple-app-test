@@ -2,6 +2,9 @@
 
 Author by Samuel Amador
 
+**Note**: This application belongs to the author. Please don't copy/reproduce this
+source code without written permission from the author.
+
 # Sample Login credential
 
 `email: sam@test.com`
@@ -40,7 +43,7 @@ Frontend Stack: `NextJS with typescript`
 
 <b>NextJS Application</b>
 
-- copy .env.example as .env and assign proper
+- copy .env.example as .env and assign appropriate setup
 
 `$ cd frontend-nextjs`
 
@@ -49,7 +52,3 @@ Frontend Stack: `NextJS with typescript`
 `$ npm run dev`
 
 
-<br/>
-
-**Note**: This application belongs to the author. Please don't copy/reproduce this
-source code without written permission from the author.
