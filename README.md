@@ -7,8 +7,8 @@ source code without written permission from the author.
 
 # Sample Login credential
 
-`email: sam@test.com`
-`password: test1234`
+Email: `sam@test.com` <br/>
+Password: `test1234`
 
 # System Requirements
 
@@ -17,11 +17,11 @@ Backend: `Laravel v.9.0`
 <br/>
 
 Frontend Stack: `NextJS with typescript`
-- Installed nodejs
+- Pre-requisite: nodejs
 
 # Installation
 
-`$ git clone [APP]`
+`$ git clone https://github.com/smzapp/simple-app-test.git`
 
 <b>Laravel Application</b>
 
@@ -29,7 +29,7 @@ Frontend Stack: `NextJS with typescript`
 
 `$ cd backend-api`
 
-`$ composer install`
+`$ composer install` else, add ` --ignore-platform-reqs` to bypass php version
 
 `$ php artisan key:generate`
 
