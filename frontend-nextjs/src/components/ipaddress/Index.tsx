@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ListItems from './ListItems';
-import AddRecords from './AddRecords';
+import AddRecords from './CreateUpdateRecord';
 import {IpAddressProvider} from './IpAddressProvider';
 import AllLogs from './AllLogs';
 
@@ -11,7 +11,9 @@ function Index() {
     <IpAddressProvider>
       <div className='flex'>
         <div className='w-3/5 bg-white'>
-          <ListItems />
+          <div className='overflow-auto h-screen'>
+           <ListItems />
+          </div>
         </div>
         <div className='w-full'>
           <AddRecords />

@@ -15,6 +15,8 @@ export interface IpAddressProps {
   system_logs?: SystemLogs[];
 }
 
+type ActionType = 'VIEW_LOG' | 'UPDATE' | undefined;
+
 interface IpAddressContextProps {
   items: IpAddressProps[];
   addRecord: (newRecord: IpAddressProps) => void;
@@ -22,6 +24,8 @@ interface IpAddressContextProps {
   refreshItems: () => Promise<void>;
   selectedIpAddress?: IpAddressProps;
   setSelectedIpAddress: (ipAddress: IpAddressProps) => void;
+  action?: ActionType,
+  setAction?: (_action: ActionType) => void;
 }
 
 const IpAddressContext = createContext<IpAddressContextProps | undefined>(undefined);
@@ -30,6 +34,7 @@ export const IpAddressProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const [items, setItems] = useState<IpAddressProps[]>([]);
   const [selectedIpAddress, setSelectedIpAddress] = useState<IpAddressProps | undefined>(undefined);
   const [loading, setLoading] = useState(true);
+  const [action, setAction] = useState<ActionType | undefined>(undefined);
 
   const fetchIpAddress = useCallback(async () => {
     try {
@@ -64,6 +69,8 @@ export const IpAddressProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         refreshItems,
         selectedIpAddress,
         setSelectedIpAddress,
+        action,
+        setAction
       }}
     >
       {children}

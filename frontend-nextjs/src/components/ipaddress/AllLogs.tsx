@@ -20,7 +20,7 @@ export default function AllLogs() {
         </thead>
         <tbody>
           {
-            selectedIpAddress?.system_logs?.length == 0 ? <p>No Logs found</p> :
+            selectedIpAddress?.system_logs?.length == 0 ? <tr><td><p>No Logs found</p></td></tr>:
             selectedIpAddress?.system_logs?.map((item, index) => (
               <tr key={index}>
                 <td>{item.old_value}</td>

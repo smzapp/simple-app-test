@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useIpAddressContext } from './IpAddressProvider';
 
 function ListItems() {
-  const { items, refreshItems, setSelectedIpAddress } = useIpAddressContext();
+  const { items, refreshItems, setSelectedIpAddress, setAction } = useIpAddressContext();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,11 +28,21 @@ function ListItems() {
           <tr key={key} className="border border-gray text-left bg-white text-sm">
             <td className='pl-2 py-2'>{item.value}</td>
             <td>{item.label}</td>
-            <td>Edit</td>
+            <td title='Click to Update'>
+              <button 
+                onClick={() => {
+                  setSelectedIpAddress(item)
+                  setAction && setAction('UPDATE')}
+                }
+              >Edit</button>
+            </td>
             <td title='Click to view Logs'>
               <button 
-                onClick={() => setSelectedIpAddress(item)}
-                >View</button>
+                onClick={() => {
+                  setSelectedIpAddress(item)
+                  setAction && setAction('VIEW_LOG')}
+                }
+              >View</button>
             </td>
           </tr>
         ))}

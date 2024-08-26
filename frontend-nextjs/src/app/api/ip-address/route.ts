@@ -21,9 +21,30 @@ export async function GET(req: NextApiRequest) {
 export async function POST(req: Request) {
   try {
     const result = await req.json();
-    const response = await axios.post(`${API_URL}/ip-addresses`, result, await authHeader());
 
-    console.log('response');
+    await axios.post(`${API_URL}/ip-addresses`, result, await authHeader());
+
+    return new Response(JSON.stringify(result), {
+      status: 201
+    })
+  } catch(e: any) {
+    
+    const errorMessage = e.response?.data?.message || 'Internal Server Error';
+
+    return new Response(JSON.stringify({ error: errorMessage }), {
+      status: e.response?.status || 500
+    });
+  }
+}
+
+export async function PUT(req: Request) {
+  try {
+    const result = await req.json();
+    
+    await axios.put(`${API_URL}/ip-addresses/${result.id}`, {
+      label: result.label,
+      value: result.value
+    }, await authHeader());
 
     return new Response(JSON.stringify(result), {
       status: 201
