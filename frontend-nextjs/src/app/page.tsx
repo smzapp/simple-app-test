@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Manage Ip Address - by Samuel Amador'
 }
 
+
 export default async function page() {
   return (
     <div className='bg-primary'>

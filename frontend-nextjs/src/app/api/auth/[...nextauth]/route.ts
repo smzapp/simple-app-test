@@ -1,4 +1,5 @@
-import NextAuth, { NextAuthOptions, Session } from 'next-auth';
+import { GetServerSidePropsContext, NextApiRequest, NextApiResponse } from 'next';
+import NextAuth, { getServerSession, NextAuthOptions, Session } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 export interface RequestBodyType {
@@ -64,4 +65,4 @@ export const authOptions: NextAuthOptions = {
 
 const handler = NextAuth(authOptions);
 
-export { handler as GET, handler as POST };
+export {  handler as GET, handler as POST };
