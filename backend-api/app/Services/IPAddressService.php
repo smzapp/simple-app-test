@@ -5,8 +5,11 @@ use App\Models\IPAddress;
 
 class IPAddressService 
 {
+    /**
+     * Change the result based on the requirement
+     */
     public function getIPList()
     {
-        return 1;
+        return IPAddress::all();
     }
 }

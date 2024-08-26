@@ -1,4 +1,6 @@
-import { BASE_URL } from "@/config/app.config";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
+import { getToken } from "next-auth/jwt";
 
 interface LoginResponseType {
   expires_at: string;
@@ -15,3 +17,19 @@ export const afterSignInHandler = (responseData: LoginResponseType) => {
     expires_at: expires_at,
   };
 };
+
+export async function authHeader() {
+  // const session : any = await getServerSession(authOptions);
+
+  console.log('session');
+  
+  return null;
+  // const header = {};
+  // if (session != null) {
+  //   return {
+  //     Authorization: 'Bearer ' + session.user?.token,
+  //     Accept: 'application/json',
+  //   };
+  // }
+  // return header;
+}

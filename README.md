@@ -1,10 +1,11 @@
 # Overview
 
-Author: Samuel Amador
-<br/>
-Description: This application is intended for ad-group. Please don't use/reproduce this
-source code without written permission from the author.
+Author by Samuel Amador
 
+# Sample Login credential
+
+`email: sam@test.com`
+`password: test1234`
 
 # System Requirements
 
@@ -47,7 +48,8 @@ Frontend Stack: `NextJS with typescript`
 
 `$ npm run dev`
 
-# Sample Login credential
 
-`email: sam@test.com`
-`password: test1234`
+<br/>
+
+**Note**: This application belongs to the author. Please don't copy/reproduce this
+source code without written permission from the author.

@@ -43,7 +43,7 @@ const LoginForm = () => {
       const res = await signIn('credentials', afterSignInHandler(data));
 
       if (res?.ok) {
-        router.push(BASE_URL + '/ip');
+        router.push(BASE_URL);
       } else {
         setErrorMessage('Something went wrong.');
       }
