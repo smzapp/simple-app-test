@@ -1,16 +1,15 @@
 import { Metadata } from 'next'
 import React from 'react'
-import ListItems from '@/components/ipaddress/ListItems'
+import IpAddress from '@/components/ipaddress/Index'
 
 export const metadata: Metadata = {
   title: 'Manage Ip Address - by Samuel Amador'
 }
 
 export default async function page() {
-  
   return (
     <div className='container mx-auto'>
-      <ListItems />
+      <IpAddress />
     </div>
   )
 }

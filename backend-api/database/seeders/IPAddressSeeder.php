@@ -15,6 +15,6 @@ class IPAddressSeeder extends Seeder
      */
     public function run()
     {
-        IPAddress::factory()->count(20)->create();
+        IPAddress::factory()->count(10)->create();
     }
 }

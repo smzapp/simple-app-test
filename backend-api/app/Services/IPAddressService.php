@@ -10,6 +10,6 @@ class IPAddressService
      */
     public function getIPList()
     {
-        return IPAddress::all();
+        return IPAddress::get();
     }
 }
