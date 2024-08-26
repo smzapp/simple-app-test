@@ -23,7 +23,7 @@ interface IpAddressContextProps {
   updateRecord: (updatedRecord: IpAddressProps) => void;
   refreshItems: () => Promise<void>;
   selectedIpAddress?: IpAddressProps;
-  setSelectedIpAddress: (ipAddress: IpAddressProps) => void;
+  setSelectedIpAddress: (ipAddress: IpAddressProps | undefined) => void;
   action?: ActionType,
   setAction?: (_action: ActionType) => void;
 }

@@ -31,16 +31,16 @@ function ListItems() {
             <td title='Click to Update'>
               <button 
                 onClick={() => {
-                  setSelectedIpAddress(item)
-                  setAction && setAction('UPDATE')}
+                  setAction && setAction('UPDATE')
+                  setSelectedIpAddress(item)}
                 }
               >Edit</button>
             </td>
             <td title='Click to view Logs'>
               <button 
                 onClick={() => {
-                  setSelectedIpAddress(item)
-                  setAction && setAction('VIEW_LOG')}
+                  setAction && setAction('VIEW_LOG')
+                  setSelectedIpAddress(item)}
                 }
               >View</button>
             </td>

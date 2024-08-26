@@ -15,12 +15,12 @@ function AddRecords() {  const { register, handleSubmit, reset, setValue, formSt
     label: '',
   },
 });
-  const { addRecord, action, selectedIpAddress, setAction } = useIpAddressContext();
+  const { addRecord, action, selectedIpAddress, setAction, refreshItems, setSelectedIpAddress } = useIpAddressContext();
   const [status, setStatus] = React.useState<{message: string, code: number} | undefined>(undefined);
 
   useEffect(() => {
     if (action === 'UPDATE' && selectedIpAddress) {
-      setValue('value', selectedIpAddress.value);
+      setValue('value', selectedIpAddress.value, {shouldTouch: true, shouldDirty: true, shouldValidate: true});
       setValue('label', selectedIpAddress.label);
     } else {
       reset();
@@ -42,7 +42,9 @@ function AddRecords() {  const { register, handleSubmit, reset, setValue, formSt
         addRecord(data);
         setStatus({ code: 201, message: 'Successfully added new record.' });
       }
+      refreshItems();
       reset();
+      setSelectedIpAddress && setSelectedIpAddress(undefined);
     } catch (e: any) {
       const msg = e.response?.data?.error ?? 'Something went wrong';
       setStatus({ code: e.response?.status || 500, message: msg });
@@ -59,7 +61,6 @@ function AddRecords() {  const { register, handleSubmit, reset, setValue, formSt
             type="text"
             placeholder="IP Address"
             className={`border p-2 ${errors.value ? 'border-red-500' : ''}`}
-            value={selectedIpAddress?.value}
             {...register('value', { required: 'IP Address is required' })}
           />
           {errors.value && <p className='text-red-500'>{errors.value.message}</p>}
@@ -69,7 +70,6 @@ function AddRecords() {  const { register, handleSubmit, reset, setValue, formSt
           <input
             type="text"
             placeholder="Label"
-            value={selectedIpAddress?.label}
             className={`border p-2 ml-2 ${errors.label ? 'border-red-500' : ''}`}
             {...register('label', { required: 'Label is required' })}
           />
